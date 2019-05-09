@@ -41,7 +41,11 @@ router.get("/:id", function(req,res,next){
 router.put("/",function(req,res,next){
   let data = {
     name: req.body.name,
-    value: req.body.value
+    country: req.body.country,
+    year: req.body.year,
+    isAvailable: req.body.isAvailable,
+    value_us: req.body.value_us,
+    img: req.body.img
   }
 
   var coin = new coins(data);
