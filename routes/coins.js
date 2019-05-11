@@ -23,15 +23,16 @@ router.get("/:name", function(req,res,next){
       "success":false
     })
   }else{
-    coins.findOne({'name': req.params.name},(err,coin)=>{
+    coins.findOne({name: req.params.name},(err,coin)=>{
       if(err){
         res.status(400).json({
           "success":false
         })
       }else{
+        console.log(coin)
         res.status(200).json({
           "success": true,
-          "ok": true
+          "ok": true,
           "coin":coin
         })
       }
