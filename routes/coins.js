@@ -16,14 +16,14 @@ router.get('/', function(req, res, next) {
   })
 });
 /* GET coin by id listing. */
-router.get("/:id", function(req,res,next){
-  var id = req.params.id || "";
-  if(id === ""){
+router.get("/:name", function(req,res,next){
+  var name = req.params.name || "";
+  if(name === ""){
     res.status(400).json({
       "success":false
     })
   }else{
-    coins.findById(id,(err,coin)=>{
+    coins.findOne({'name': req.params.name},(err,coin)=>{
       if(err){
         res.status(400).json({
           "success":false
