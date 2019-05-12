@@ -16,24 +16,24 @@ router.get('/', function(req, res, next) {
   })
 });
 /* GET coin by id listing. */
-router.get("/:name", function(req,res,next){
-  var name = req.params.name || "";
-  if(name === ""){
+router.get("/:country", function(req,res,next){
+  var country = req.params.country || "";
+  if(country === ""){
     res.status(400).json({
       "success":false
     })
   }else{
-    coins.findOne({name: req.params.name},(err,coin)=>{
+    coins.find({country: req.params.country},(err,coins)=>{
       if(err){
         res.status(400).json({
           "success":false
         })
       }else{
-        console.log(coin)
+        console.log(coins)
         res.status(200).json({
           "success": true,
           "ok": true,
-          "coin":coin
+          "coin": coins
         })
       }
     })
